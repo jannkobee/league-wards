@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1 class="title" @click="$router.push({ name: 'dashboard' })">League Wards</h1>
     <SearchBar />
     <div>
       <Card>
@@ -164,13 +163,6 @@ watch(
   flex-direction: column;
   text-align: center;
   gap: 40px;
-  user-select: none;
-}
-
-.title {
-  font-size: 40px;
-  font-weight: 700;
-  cursor: pointer;
 }
 
 .card-elevated {

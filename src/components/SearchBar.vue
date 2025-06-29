@@ -1,4 +1,5 @@
 <template>
+  <h1 class="title" @click="$router.push({ name: 'dashboard' })">League Wards</h1>
   <div style="display: flex; gap: 5px">
     <Select
       v-model="form.region"
@@ -60,3 +61,16 @@ const findSummoner = async () => {
   }
 };
 </script>
+
+<style lang="css" scoped>
+.title {
+  font-size: 80px;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffd700;
+  text-shadow: 0 0 3px #c69700;
+  cursor: pointer;
+  user-select: none;
+}
+</style>
