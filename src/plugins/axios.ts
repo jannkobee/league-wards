@@ -1,11 +1,7 @@
 import axios from "axios";
 import { showToast } from "@/composables/useToast";
 
-<<<<<<< HEAD
-const apiKey = import.meta.env.VITE_API_KEY;
-=======
 const apiKey = import.meta.env.API_KEY;
->>>>>>> origin/netlify-version
 
 const axiosRequest = axios.create({
   headers: {
