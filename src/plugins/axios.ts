@@ -1,19 +1,17 @@
 import axios from "axios";
 import { showToast } from "@/composables/useToast";
 
-const apiKey = import.meta.env.VITE_API_KEY;
-
+// Remove API key and Netlify token - they're now handled server-side
 const axiosRequest = axios.create({
   headers: {
-    "X-Riot-Token": apiKey,
-    Accept: "application/json",
+    "Content-Type": "application/json",
   },
 });
+
 axiosRequest.interceptors.response.use(
   async (res) => res,
   async (error) => {
     const { data } = error.response || {};
-
     if (data?.status?.status_code) {
       showToast({
         severity: "error",
@@ -29,7 +27,6 @@ axiosRequest.interceptors.response.use(
         life: 3000,
       });
     }
-
     return Promise.reject(error);
   },
 );
