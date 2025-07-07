@@ -1,7 +1,11 @@
 import axios from "axios";
 import { showToast } from "@/composables/useToast";
 
+<<<<<<< HEAD
 const apiKey = import.meta.env.VITE_API_KEY;
+=======
+const apiKey = import.meta.env.API_KEY;
+>>>>>>> origin/netlify-version
 
 const axiosRequest = axios.create({
   headers: {
@@ -9,7 +13,6 @@ const axiosRequest = axios.create({
     Accept: "application/json",
   },
 });
-
 axiosRequest.interceptors.response.use(
   async (res) => res,
   async (error) => {
