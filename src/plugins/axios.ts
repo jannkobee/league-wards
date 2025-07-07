@@ -1,9 +1,11 @@
 import axios from "axios";
 import { showToast } from "@/composables/useToast";
 
+const apiKey = import.meta.env.VITE_API_KEY;
+
 const axiosRequest = axios.create({
-  baseURL: "/.netlify/functions",
   headers: {
+    "X-Riot-Token": apiKey,
     Accept: "application/json",
   },
 });
