@@ -1,7 +1,7 @@
 import axios from "axios";
 import { showToast } from "@/composables/useToast";
 
-const apiKey = import.meta.env.API_KEY;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const axiosRequest = axios.create({
   headers: {
