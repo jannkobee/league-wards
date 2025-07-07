@@ -1,6 +1,6 @@
 import axios from "axios";
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const { endpoint, gameName, tagLine, pUuid, regionCode } = event.queryStringParameters;
 
   if (!endpoint) {
@@ -11,7 +11,7 @@ exports.handler = async (event) => {
   }
 
   try {
-    let url;
+    let url: string;
 
     switch (endpoint) {
       case "account":
@@ -61,10 +61,9 @@ exports.handler = async (event) => {
         };
     }
 
-    // Your API key is safe here on the server
     const response = await axios.get(url, {
       headers: {
-        "X-Riot-Token": process.env.RIOT_API_KEY, // Only server can see this
+        "X-Riot-Token": process.env.RIOT_API_KEY!,
       },
     });
 
