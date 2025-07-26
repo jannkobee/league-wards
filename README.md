@@ -1,6 +1,6 @@
 # League Wards
 
-https://leaguewards.netlify.app/#
+[League Wards](https://leaguewards.netlify.app/#){:target="_blank"}
 
 This template should help get you started developing with Vue 3 in Vite.
 
