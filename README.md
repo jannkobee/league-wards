@@ -1,78 +1,39 @@
 # League Wards
 
-A personal project for viewing League of Legends player ranks and match history.
+This template should help get you started developing with Vue 3 in Vite.
 
-🔗 **Live Demo:** <a href="https://leaguewards.netlify.app/#" target="_blank" rel="noopener noreferrer">League Wards</a>
+## Recommended IDE Setup
 
-## About
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-This is a personal development project built with Vue 3 and Vite to display League of Legends player information including rank and match history. Currently a work in progress.
+## Type Support for `.vue` Imports in TS
 
-## Tech Stack
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
-- **Framework:** Vue 3 with Composition API
-- **Build Tool:** Vite
-- **Language:** TypeScript
-- **Styling:** [Your CSS framework/approach]
-- **Deployment:** Netlify
+## Customize configuration
 
-## Development Setup
+See [Vite Configuration Reference](https://vite.dev/config/).
 
-### Prerequisites
+## Project Setup
 
-- Node.js (version 16 or higher)
-- npm or yarn
+```sh
+npm install
+```
 
-### Getting Started
+### Compile and Hot-Reload for Development
 
-1. Clone the repository:
+```sh
+npm run dev
+```
 
-   ```sh
-   git clone [your-repo-url]
-   cd league-wards
-   ```
+### Type-Check, Compile and Minify for Production
 
-2. Install dependencies:
+```sh
+npm run build
+```
 
-   ```sh
-   npm install
-   ```
+### Lint with [ESLint](https://eslint.org/)
 
-3. Start development server:
-
-   ```sh
-   npm run dev
-   ```
-
-4. Open your browser to `http://localhost:5173`
-
-### Available Scripts
-
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build for production with type checking
-- `npm run lint` - Run ESLint for code quality
-
-## IDE Setup
-
-**Recommended:**
-
-- [VSCode](https://code.visualstudio.com/)
-- [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension (disable Vetur)
-
-## Project Goals
-
-- [x] Set up Vue 3 + TypeScript development environment
-- [x] Player search functionality
-- [x] Display current rank and LP
-- [ ] Show recent match history
-- [ ] Match details and statistics
-
-_🚧 Work in progress - not all features implemented yet_
-
-## Notes
-
-This is a learning project focused on exploring Vue 3's Composition API and modern frontend development practices. Feel free to explore the code and provide feedback!
-
----
-
-_This is a personal project by me - Built for learning and experimentation_
+```sh
+npm run lint
+```

@@ -7,12 +7,10 @@ export const useApi = () => {
   // ACCOUNT-V1 Tab
   async function getAccountByRiotId(gameName: string, tagLine: string) {
     loading.value = true;
-
     try {
       const res = await axios.get(
-        `https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}`,
+        `/.netlify/functions/riot-api?endpoint=account&gameName=${gameName}&tagLine=${tagLine}`,
       );
-
       return res;
     } catch (error) {
       throw error;
@@ -24,12 +22,10 @@ export const useApi = () => {
   // LEAGUE-V4 Tab
   async function getLeagueEntriesInAllQueuesForAGivenPUuid(pUuid: string, regionCode: string) {
     loading.value = true;
-
     try {
       const res = await axios.get(
-        `https://${regionCode}.api.riotgames.com/lol/league/v4/entries/by-puuid/${pUuid}`,
+        `/.netlify/functions/riot-api?endpoint=league&pUuid=${pUuid}&regionCode=${regionCode}`,
       );
-
       return res;
     } catch (error) {
       throw error;
@@ -41,12 +37,10 @@ export const useApi = () => {
   // SUMMONER-V4 Tab
   async function getASummonerByPUuid(pUuid: string, regionCode: string) {
     loading.value = true;
-
     try {
       const res = await axios.get(
-        `https://${regionCode}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${pUuid}`,
+        `/.netlify/functions/riot-api?endpoint=summoner&pUuid=${pUuid}&regionCode=${regionCode}`,
       );
-
       return res;
     } catch (error) {
       throw error;
@@ -58,12 +52,10 @@ export const useApi = () => {
   // MATCH-V5 Tab
   async function getAListOfMatchIdsByPUuid(pUuid: string, regionCode: string) {
     loading.value = true;
-
     try {
       const res = await axios.get(
-        `https://${regionCode}.api.riotgames.com/lol/match/v5/matches/by-puuid/${pUuid}/ids`,
+        `/.netlify/functions/riot-api?endpoint=matches&pUuid=${pUuid}&regionCode=${regionCode}`,
       );
-
       return res;
     } catch (error) {
       throw error;
