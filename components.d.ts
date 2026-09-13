@@ -8,11 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Button: typeof import('primevue/button')['default']
-    Card: typeof import('primevue/card')['default']
     ChampionModal: typeof import('./src/components/Codex/ChampionModal.vue')['default']
-    InputGroup: typeof import('primevue/inputgroup')['default']
-    InputText: typeof import('primevue/inputtext')['default']
     ItemModal: typeof import('./src/components/Codex/ItemModal.vue')['default']
     MatchCard: typeof import('./src/components/MatchHistory/MatchCard.vue')['default']
     MatchDetails: typeof import('./src/components/MatchHistory/MatchDetails.vue')['default']
@@ -21,7 +17,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchBar: typeof import('./src/components/SearchBar.vue')['default']
-    Select: typeof import('primevue/select')['default']
     Toast: typeof import('primevue/toast')['default']
   }
 }
