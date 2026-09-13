@@ -1,9 +1,12 @@
 import axios from "axios";
 import { showToast } from "@/composables/useToast";
 
+const useDirectRiotApi = import.meta.env.VITE_API_MODE === "direct";
+
 const axiosRequest = axios.create({
   headers: {
     "Content-Type": "application/json",
+    ...(useDirectRiotApi ? { "X-Riot-Token": import.meta.env.VITE_API_KEY } : {}),
   },
 });
 

@@ -18,7 +18,10 @@ npm install
 npm run dev
 ```
 
-Set `RIOT_API_KEY` in your Netlify site's environment variables before deploying.
+Choose the API mode with `VITE_API_MODE`:
+
+- `netlify` (recommended for deployments): set `VITE_API_MODE=netlify` and configure `RIOT_API_KEY` in Netlify environment variables. The Riot key stays server-side.
+- `direct` (local development only): set `VITE_API_MODE=direct` and `VITE_API_KEY=your-riot-key` in `.env`. Vite exposes `VITE_*` values to the browser, so never use this mode for a public deployment.
 
 ## Scripts
 
