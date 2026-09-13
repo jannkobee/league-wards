@@ -8,6 +8,7 @@ A Vue 3 and Vite project for viewing League of Legends player ranks and match hi
 
 - Vue 3, TypeScript, and Vite
 - PrimeVue
+- Netlify Functions
 - Riot Games API
 
 ## Development
@@ -17,7 +18,7 @@ npm install
 npm run dev
 ```
 
-Create a `.env` file with `VITE_API_KEY` set to your Riot API key before starting the app.
+Set `RIOT_API_KEY` in your Netlify site's environment variables before deploying.
 
 ## Scripts
 

@@ -1,59 +1,51 @@
 import axios from "@/plugins/axios";
 import { ref } from "vue";
-import { getAccountRegionalRouting, getMatchRegionalRouting } from "@/utils/riotRouting";
 import type { MatchDto, RiotAccountDto, SummonerDto, LeagueEntryDto } from "@/types/league";
 
 const matchCache = new Map<string, MatchDto>();
+
+function riotApiUrl(parameters: Record<string, string | number | undefined>) {
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(parameters)) {
+    if (value !== undefined) query.set(key, String(value));
+  }
+  return `/.netlify/functions/riot-api?${query}`;
+}
 
 export const useApi = () => {
   const loading = ref(false);
 
   async function getAccountByRiotId(gameName: string, tagLine: string, regionCode?: string) {
     loading.value = true;
-    const regional = regionCode ? getAccountRegionalRouting(regionCode) : "asia";
     try {
-      return await axios.get<RiotAccountDto>(
-        `https://${regional}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${encodeURIComponent(gameName)}/${encodeURIComponent(tagLine)}`,
-      );
+      return await axios.get<RiotAccountDto>(riotApiUrl({ endpoint: "account", gameName, tagLine, regionCode }));
     } finally { loading.value = false; }
   }
 
   async function getLeagueEntriesInAllQueuesForAGivenPUuid(pUuid: string, regionCode: string) {
     loading.value = true;
     try {
-      return await axios.get<LeagueEntryDto[]>(
-        `https://${regionCode.toLowerCase()}.api.riotgames.com/lol/league/v4/entries/by-puuid/${pUuid}`,
-      );
+      return await axios.get<LeagueEntryDto[]>(riotApiUrl({ endpoint: "league", pUuid, regionCode }));
     } finally { loading.value = false; }
   }
 
   async function getASummonerByPUuid(pUuid: string, regionCode: string) {
     loading.value = true;
     try {
-      return await axios.get<SummonerDto>(
-        `https://${regionCode.toLowerCase()}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${pUuid}`,
-      );
+      return await axios.get<SummonerDto>(riotApiUrl({ endpoint: "summoner", pUuid, regionCode }));
     } finally { loading.value = false; }
   }
 
   async function getAListOfMatchIdsByPUuid(pUuid: string, regionCode: string, start = 0, count = 10, queue?: number) {
     loading.value = true;
-    const regional = getMatchRegionalRouting(regionCode);
     try {
-      const parameters = new URLSearchParams({ start: String(start), count: String(count) });
-      if (queue !== undefined) parameters.set("queue", String(queue));
-      return await axios.get<string[]>(
-        `https://${regional}.api.riotgames.com/lol/match/v5/matches/by-puuid/${pUuid}/ids?${parameters}`,
-      );
+      return await axios.get<string[]>(riotApiUrl({ endpoint: "matches", pUuid, regionCode, start, count, queue }));
     } finally { loading.value = false; }
   }
 
   async function getMatchById(matchId: string, regionCode: string): Promise<MatchDto> {
     if (matchCache.has(matchId)) return matchCache.get(matchId)!;
-    const regional = getMatchRegionalRouting(regionCode);
-    const response = await axios.get<MatchDto>(
-      `https://${regional}.api.riotgames.com/lol/match/v5/matches/${matchId}`,
-    );
+    const response = await axios.get<MatchDto>(riotApiUrl({ endpoint: "match", matchId, regionCode }));
     matchCache.set(matchId, response.data);
     return response.data;
   }
