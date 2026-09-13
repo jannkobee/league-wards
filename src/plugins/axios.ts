@@ -1,10 +1,12 @@
 import axios from "axios";
 import { showToast } from "@/composables/useToast";
 
-// Remove API key and Netlify token - they're now handled server-side
+const apiKey = import.meta.env.VITE_API_KEY;
+
 const axiosRequest = axios.create({
   headers: {
-    "Content-Type": "application/json",
+    "X-Riot-Token": apiKey,
+    Accept: "application/json",
   },
 });
 
