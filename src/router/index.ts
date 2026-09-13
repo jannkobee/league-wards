@@ -9,9 +9,18 @@ const router = createRouter({
       component: () => import("@/views/DashboardView.vue"),
     },
     {
+      path: "/codex",
+      name: "codex-view",
+      component: () => import("@/views/CodexView.vue"),
+    },
+    {
       path: "/:account/:region",
       name: "account-view",
       component: () => import("@/views/AccountView.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: "/",
     },
   ],
 });

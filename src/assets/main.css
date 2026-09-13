@@ -1,55 +1,36 @@
-
-
-/* color palette from <https://github.com/vuejs/theme> */
+/* Runeterra Hextech Observatory Theme */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  --color-bg-base: #07090e;
+  --color-bg-surface: #0c121d;
+  --color-bg-card: rgba(14, 21, 35, 0.75);
+  --color-bg-elevated: rgba(19, 28, 46, 0.85);
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  --color-gold: #c8aa6e;
+  --color-gold-bright: #f0e6d2;
+  --color-gold-dark: #785a28;
+  --color-gold-glow: rgba(200, 170, 110, 0.25);
 
-  --vt-c-indigo: #2c3e50;
+  --color-hextech: #0ac8b9;
+  --color-hextech-neon: #00f0ff;
+  --color-hextech-glow: rgba(10, 200, 185, 0.3);
 
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+  --color-ward: #ec4899;
+  --color-ward-glow: rgba(236, 72, 153, 0.3);
 
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-}
+  --color-victory: #0ac8b9;
+  --color-victory-bg: rgba(10, 200, 185, 0.08);
+  --color-defeat: #f43f5e;
+  --color-defeat-bg: rgba(244, 63, 94, 0.08);
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  --color-text-primary: #f0e6d2;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
+  --color-border: rgba(200, 170, 110, 0.16);
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 *,
@@ -57,32 +38,124 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
-  font-weight: normal;
+  padding: 0;
 }
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
+  background-color: var(--color-bg-base);
+  background-image:
+    linear-gradient(180deg, rgba(7, 9, 14, 0.86) 0%, rgba(7, 9, 14, 0.72) 35%, rgba(7, 9, 14, 0.94) 100%),
+    url('/bg-observatory.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
   line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 170, 110, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 170, 110, 0.45);
+}
+
+/* Glassmorphism Card Style */
+.glass-panel {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.gold-accent-border {
+  position: relative;
+}
+
+.gold-accent-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+/* PrimeVue Component Styling Overrides */
+.p-card {
+  background: var(--color-bg-card) !important;
+  backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 12px !important;
+  color: var(--color-text-primary) !important;
+}
+
+.p-inputtext {
+  background: rgba(7, 10, 16, 0.8) !important;
+  border-color: rgba(200, 170, 110, 0.25) !important;
+  color: var(--color-text-primary) !important;
+  font-family: var(--font-body) !important;
+}
+
+.p-inputtext:focus {
+  border-color: var(--color-hextech) !important;
+  box-shadow: 0 0 12px var(--color-hextech-glow) !important;
+}
+
+.p-select {
+  background: rgba(7, 10, 16, 0.8) !important;
+  border-color: rgba(200, 170, 110, 0.25) !important;
+  color: var(--color-text-primary) !important;
+  font-family: var(--font-body) !important;
+}
+
+.p-select:focus,
+.p-select.p-focus {
+  border-color: var(--color-hextech) !important;
+  box-shadow: 0 0 12px var(--color-hextech-glow) !important;
+}
+
+.p-select-overlay {
+  background: #0d1422 !important;
+  border: 1px solid var(--color-border) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.p-button {
+  background: linear-gradient(135deg, #0ac8b9 0%, #009988 100%) !important;
+  border: 1px solid rgba(0, 240, 255, 0.4) !important;
+  color: #05161d !important;
+  font-weight: 700 !important;
+  font-family: var(--font-body) !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 2px 10px rgba(10, 200, 185, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+
+.p-button:hover {
+  background: linear-gradient(135deg, #00f0ff 0%, #0ac8b9 100%) !important;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.5) !important;
+  transform: translateY(-1px);
 }

@@ -64,8 +64,8 @@ This is a personal development project built with Vue 3 and Vite to display Leag
 - [x] Set up Vue 3 + TypeScript development environment
 - [x] Player search functionality
 - [x] Display current rank and LP
-- [ ] Show recent match history
-- [ ] Match details and statistics
+- [x] Show recent match history
+- [x] Match details and statistics
 
 _🚧 Work in progress - not all features implemented yet_
 

@@ -8,21 +8,20 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AutoComplete: typeof import('primevue/autocomplete')['default']
     Button: typeof import('primevue/button')['default']
     Card: typeof import('primevue/card')['default']
-    IconField: typeof import('primevue/iconfield')['default']
+    ChampionModal: typeof import('./src/components/Codex/ChampionModal.vue')['default']
     InputGroup: typeof import('primevue/inputgroup')['default']
-    InputIcon: typeof import('primevue/inputicon')['default']
     InputText: typeof import('primevue/inputtext')['default']
+    ItemModal: typeof import('./src/components/Codex/ItemModal.vue')['default']
+    MatchCard: typeof import('./src/components/MatchHistory/MatchCard.vue')['default']
+    MatchDetails: typeof import('./src/components/MatchHistory/MatchDetails.vue')['default']
+    MatchHistory: typeof import('./src/components/MatchHistory/MatchHistory.vue')['default']
+    MatchSummaryStats: typeof import('./src/components/MatchHistory/MatchSummaryStats.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Search: typeof import('./src/components/Search.vue')['default']
     SearchBar: typeof import('./src/components/SearchBar.vue')['default']
     Select: typeof import('primevue/select')['default']
-    Splitter: typeof import('primevue/splitter')['default']
-    SplitterPanel: typeof import('primevue/splitterpanel')['default']
     Toast: typeof import('primevue/toast')['default']
-    Toolbar: typeof import('primevue/toolbar')['default']
   }
 }
